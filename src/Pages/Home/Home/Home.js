@@ -1,12 +1,14 @@
 import React from 'react';
 import Navigation from '../../Shared/Navigation/Navigation';
+import Banner from '../Banner/Banner';
+import Bikes from '../Bikes/Bikes';
 
 const Home = () => {
     return (
         <div>
             <Navigation></Navigation>
-            
-            <h2>This is Home</h2>
+            <Banner></Banner>
+            <Bikes></Bikes>
         </div>
     );
 };
