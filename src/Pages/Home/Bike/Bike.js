@@ -1,17 +1,17 @@
 import React from 'react';
 import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 
 const Bike = ({bike}) => {
     const {name, description} = bike;
     console.log(bike)
     return (
-   
-        <Grid item xs={2} sm={4} md={4} >
-            <Card sx={{ minWidth: 275, boxShadow: 0 }}>
+        <Grid  item xs={4} sm={4} md={4} sx={{display:'flex', textAlign: 'center', alignItems:'center', justifyContent:'flex-start'}} >
+            <Card sx={{ minWidth: 275 }}>
                 <CardMedia
                     component="img"
                     style={{width:'auto', height:'80px', margin:'0 auto'}}
@@ -26,6 +26,9 @@ const Bike = ({bike}) => {
                     {description}
                     </Typography>
                 </CardContent>
+                <CardActions sx={{ ml: 15, p:1.5}}>
+                    <Button variant="contained" size="small">Learn More</Button>
+                </CardActions>
             </Card>          
         </Grid>
     );
