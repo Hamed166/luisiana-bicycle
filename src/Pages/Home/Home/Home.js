@@ -7,7 +7,6 @@ import Review from '../Review/Review';
 const Home = () => {
     return (
         <div>
-            <Navigation></Navigation>
             <Banner></Banner>
             <Bikes></Bikes>
             <Review></Review>

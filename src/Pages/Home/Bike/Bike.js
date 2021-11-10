@@ -8,7 +8,6 @@ import { Button, Grid } from '@mui/material';
 
 const Bike = ({bike}) => {
     const {name, description} = bike;
-    console.log(bike)
     return (
         <Grid  item xs={4} sm={4} md={4} sx={{display:'flex', textAlign: 'center', alignItems:'center', justifyContent:'flex-start'}} >
             <Card sx={{ minWidth: 275 }}>
@@ -27,7 +26,7 @@ const Bike = ({bike}) => {
                     </Typography>
                 </CardContent>
                 <CardActions sx={{ ml: 15, p:1.5}}>
-                    <Button variant="contained" size="small">Learn More</Button>
+                    <Button variant="contained" size="small">Buy Now</Button>
                 </CardActions>
             </Card>          
         </Grid>
