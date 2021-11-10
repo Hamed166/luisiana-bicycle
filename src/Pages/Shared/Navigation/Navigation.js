@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 
@@ -22,7 +22,7 @@ const Navigation = () => {
                     <Link to="/home" sx={{mr:2}}><Button color="inherit">Home</Button></Link>
                     <Link to="/bikes" sx={{mr:2}}><Button color="inherit">Bikes</Button></Link>
                     <Link to="/explore" sx={{mr:2}}><Button color="inherit">Explore</Button></Link>
-                    <Button color="inherit">Login</Button>
+                    <NavLink to="/login"><Button color="inherit">Login</Button></NavLink>
                 </Toolbar>
             </AppBar>
         </Box>

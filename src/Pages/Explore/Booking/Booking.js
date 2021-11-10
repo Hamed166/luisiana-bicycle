@@ -29,8 +29,8 @@ const Booking = ({booking}) => {
                         {description}
                     </Typography>
                     </CardContent>
-                    <Link to='/placeOrder' sx={{ ml: 13, p:1.5}}>
-                        <Button sx={{ fontSize: 16}} style={{backgroundColor: '#2FB6FA'}} variant="contained" size="small">Buy The {name}</Button>
+                    <Link to='/placeOrder' sx={{ ml: 13, m:2, p:2}} style={{ textDecoration: 'none'}}>
+                        <Button sx={{ fontSize: 16}} style={{backgroundColor: '#2FB6FA', textDecoration: 'none'}} variant="contained" size="small">Buy The {name}</Button>
                     </Link>
                     </Box>
             </Card>
