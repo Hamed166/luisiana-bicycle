@@ -6,6 +6,7 @@ import Review from '../Review/Review';
 const Home = () => {
     return (
         <div>
+            
             <Banner></Banner>
             <Bikes></Bikes>
             <Review></Review>
