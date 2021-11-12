@@ -4,13 +4,15 @@ import img from '../../../images/banner-bg.jpg';
 import TextField from '@mui/material/TextField';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
+import GoogleIcon from '@mui/icons-material/Google';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const {user, loginUser, authError, isLoading} = useAuth()
+    const {user, loginUser, authError, isLoading, signInWithGoogle} = useAuth()
 
     const location = useLocation();
     const history = useHistory();
+
 
     const handleOnChange = e =>{
         const field = e.target.name;
@@ -22,6 +24,10 @@ const Login = () => {
     const handleLoginSubmit = e =>{
        loginUser(loginData.email, loginData.password, location , history)
         e.preventDefault();
+    }
+
+    const handleGoogleSignIn = () =>{
+        signInWithGoogle(location, history)
     }
     return (
         <Container>
@@ -40,7 +46,7 @@ const Login = () => {
                                 sx={{width:'90%', m:1}}
                                 name="email"
                                 type="email"
-                                onChange= {handleOnChange}
+                                onBlur= {handleOnChange}
                                 defaultValue="Your Email"
                                 size="small"
                                 />
@@ -49,7 +55,7 @@ const Login = () => {
                                 id="outlined-required"
                                 type="password"
                                 name="password"
-                                onChange= {handleOnChange}
+                                onBlur= {handleOnChange}
                                 sx={{width:'90%', m:1}}
                                 defaultValue="Your Email"
                                 size="small"
@@ -60,12 +66,15 @@ const Login = () => {
                                 <NavLink 
                                 style={{ textDecoration:'none'}}
                                  to="/register">
-                                <Button variant="text">New User? Pleae Register</Button></NavLink>
+                                <Button variant="text">New User? Please Register</Button></NavLink>
+                                {isLoading && <CircularProgress />}
+                                {user?.email && <Alert sx={{width:'90%', m:1}} severity="success">login successful!</Alert>}
+                                {authError && <Alert sx={{width:'90%', m:1}} variant="outlined" severity="error">
+                                {authError}</Alert>}
                             </form>
-                            {isLoading && <CircularProgress />}
-                            {user?.email && <Alert variant="outlined" severity="success">login successful!</Alert>}
-                            {authError && <Alert variant="outlined" severity="error">
-                            {authError}</Alert>}     
+                            {/* <svg style={{backgroundColor:'red'} } data-testid="GoogleIcon"></svg> */}
+                            <Button sx={{width:'50%', m:1}} onClick={handleGoogleSignIn} variant="contained">Google Sign-In</Button>
+                                 
                 </Grid>
                 <Grid item xs={12} md={6}>
                 <CardMedia

@@ -14,6 +14,7 @@ import Navigation from './Pages/Shared/Navigation/Navigation';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/Login/PrivateRoute/PrivateRoute';
+import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
 
 function App() {
   return (
@@ -46,6 +47,9 @@ function App() {
               </Route>
               <PrivateRoute exact path="/placeOrder">
                 <PlaceOrder/>
+              </PrivateRoute>
+              <PrivateRoute exact path="/dashboard">
+                <DashBoard/>
               </PrivateRoute>
             </Switch>
         </Router>

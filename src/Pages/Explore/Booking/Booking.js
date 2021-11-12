@@ -2,12 +2,12 @@
 import { Grid, Typography } from '@mui/material';
 import React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import CardMedia from '@mui/material/CardMedia';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
+import PlaceOrder from '../PlaceOrder/PlaceOrder';
 
 const Booking = ({booking}) => {
     const {id, name, description, img} = booking;
@@ -34,6 +34,7 @@ const Booking = ({booking}) => {
                         </Link>
                     </Box>
             </Card>
+
         </Grid>
     );
 };

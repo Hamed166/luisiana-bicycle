@@ -25,7 +25,13 @@ const Navigation = () => {
                     <Link to="/bikes" sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Bikes</Button></Link>
                     <Link to="/explore" sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Explore</Button></Link>
                     {
-                        user?.email ? <Button onClick={logOut} color="inherit">Logout</Button> :
+                        user?.email ?
+                        <Box>
+                             <NavLink style={{textDecoration:'none'}} to="/dashboard"><Button color="inherit">Dashboard</Button></NavLink>
+                            <Button onClick={logOut} color="inherit">Logout</Button> 
+                        </Box>
+                         
+                         :
                         <NavLink style={{textDecoration:'none'}} to="/login"><Button color="inherit">Login</Button></NavLink>
                     }
                 </Toolbar>

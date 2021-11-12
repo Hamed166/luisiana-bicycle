@@ -2,14 +2,16 @@ import { Button, CardMedia, Container, Grid, Typography, CircularProgress, Alert
 import React, { useState } from 'react';
 import img from '../../../images/banner.jpg';
 import TextField from '@mui/material/TextField';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
     const {user, registerUser, isLoading, authError} = useAuth();
 
-    const handleOnChange = e =>{
+    const history = useHistory()
+
+    const handleOnBlur = e =>{
         const field = e.target.name;
         const value = e.target.value;
         const newLoginData ={...loginData};
@@ -21,15 +23,12 @@ const Register = () => {
             alert('your password did not match');
             return
         }
-        registerUser(loginData.email, loginData.password);
+        registerUser(loginData.email, loginData.password, loginData.name, history);
         e.preventDefault();
     }
     return (
         <Container>
-            <Typography sx={{ fontWeight: 600, m:15 }} variant="h4" component="div">
-                Register Please
-            </Typography>
-            <Grid container spacing={2} sx={{m:10}}>
+            <Grid container spacing={2} sx={{my:10}}>
                 <Grid item xs={12} md={6}>
                             <Typography variant="h5" component="div">
                             Register
@@ -39,10 +38,19 @@ const Register = () => {
                                 required
                                 id="outlined-required"
                                 sx={{width:'90%', m:1}}
+                                label="Your Name"
+                                name="name"
+                                type="text"
+                                onBlur= {handleOnBlur}
+                                />
+                                <TextField
+                                required
+                                id="outlined-required"
+                                sx={{width:'90%', m:1}}
                                 label="Your Email"
                                 name="email"
                                 type="email"
-                                onChange= {handleOnChange}
+                                onBlur= {handleOnBlur}
                                 />
                                 <TextField
                                 required
@@ -50,7 +58,7 @@ const Register = () => {
                                 label="Your Password"
                                 type="password"
                                 name="password"
-                                onChange= {handleOnChange}
+                                onBlur= {handleOnBlur}
                                 sx={{width:'90%', m:1}}
                                 />
                                  <TextField
@@ -59,7 +67,7 @@ const Register = () => {
                                 type="password"
                                 name="password2"
                                 label="Confirm Password"
-                                onChange= {handleOnChange}
+                                onBlur= {handleOnBlur}
                                 sx={{width:'90%', m:1}}
                                 />
                                 
@@ -70,10 +78,10 @@ const Register = () => {
                                  to="/login">
                                 <Button variant="text">Already Registered? Pleae Login</Button></NavLink>
                             </form>} 
-                            {isLoading && <CircularProgress />}
-                            {user?.email && <Alert variant="outlined" severity="success">User Created successfully!</Alert>}
-                            {authError && <Alert variant="outlined" severity="error">
-                            {authError}</Alert>}   
+                                {isLoading && <CircularProgress />}
+                                {user?.email && <Alert severity="success">User Created successfully!</Alert>}
+                                {authError && <Alert severity="error">{authError}
+                                </Alert>}   
                 </Grid>
                 <Grid item xs={12} md={6}>
                 <CardMedia
