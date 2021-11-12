@@ -13,6 +13,7 @@ import Login from './Pages/Login/Login/Login';
 import Navigation from './Pages/Shared/Navigation/Navigation';
 import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/Login/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -43,9 +44,9 @@ function App() {
               <Route path="/register">
                 <Register />
               </Route>
-              <Route exact path="/placeOrder">
+              <PrivateRoute exact path="/placeOrder">
                 <PlaceOrder/>
-              </Route>
+              </PrivateRoute>
             </Switch>
         </Router>
       

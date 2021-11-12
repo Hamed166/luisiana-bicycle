@@ -1,11 +1,16 @@
-import { Button, CardMedia, Container, Grid, Typography } from '@mui/material';
+import { Button, CardMedia, Container, Grid, Typography, CircularProgress, Alert } from '@mui/material';
 import React, { useState } from 'react';
 import img from '../../../images/banner-bg.jpg';
 import TextField from '@mui/material/TextField';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
+    const {user, loginUser, authError, isLoading} = useAuth()
+
+    const location = useLocation();
+    const history = useHistory();
 
     const handleOnChange = e =>{
         const field = e.target.name;
@@ -15,7 +20,7 @@ const Login = () => {
         setLoginData(newLoginData);
     }
     const handleLoginSubmit = e =>{
-       
+       loginUser(loginData.email, loginData.password, location , history)
         e.preventDefault();
     }
     return (
@@ -56,7 +61,11 @@ const Login = () => {
                                 style={{ textDecoration:'none'}}
                                  to="/register">
                                 <Button variant="text">New User? Pleae Register</Button></NavLink>
-                            </form>    
+                            </form>
+                            {isLoading && <CircularProgress />}
+                            {user?.email && <Alert variant="outlined" severity="success">login successful!</Alert>}
+                            {authError && <Alert variant="outlined" severity="error">
+                            {authError}</Alert>}     
                 </Grid>
                 <Grid item xs={12} md={6}>
                 <CardMedia

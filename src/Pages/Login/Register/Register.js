@@ -1,11 +1,13 @@
-import { Button, CardMedia, Container, Grid, Typography } from '@mui/material';
+import { Button, CardMedia, Container, Grid, Typography, CircularProgress, Alert } from '@mui/material';
 import React, { useState } from 'react';
 import img from '../../../images/banner.jpg';
 import TextField from '@mui/material/TextField';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
+    const {user, registerUser, isLoading, authError} = useAuth();
 
     const handleOnChange = e =>{
         const field = e.target.name;
@@ -17,7 +19,9 @@ const Register = () => {
     const handleLoginSubmit = e =>{
         if(loginData.password !== loginData.password2){
             alert('your password did not match');
+            return
         }
+        registerUser(loginData.email, loginData.password);
         e.preventDefault();
     }
     return (
@@ -30,7 +34,7 @@ const Register = () => {
                             <Typography variant="h5" component="div">
                             Register
                             </Typography>
-                            <form onSubmit={handleLoginSubmit}>
+                            { !isLoading && <form onSubmit={handleLoginSubmit}>
                                 <TextField
                                 required
                                 id="outlined-required"
@@ -43,7 +47,7 @@ const Register = () => {
                                 <TextField
                                 required
                                 id="outlined-required"
-                                label="Password"
+                                label="Your Password"
                                 type="password"
                                 name="password"
                                 onChange= {handleOnChange}
@@ -54,7 +58,7 @@ const Register = () => {
                                 id="outlined-required"
                                 type="password"
                                 name="password2"
-                                label="ConfirmPassword"
+                                label="Confirm Password"
                                 onChange= {handleOnChange}
                                 sx={{width:'90%', m:1}}
                                 />
@@ -65,7 +69,11 @@ const Register = () => {
                                 style={{ textDecoration:'none'}}
                                  to="/login">
                                 <Button variant="text">Already Registered? Pleae Login</Button></NavLink>
-                            </form>    
+                            </form>} 
+                            {isLoading && <CircularProgress />}
+                            {user?.email && <Alert variant="outlined" severity="success">User Created successfully!</Alert>}
+                            {authError && <Alert variant="outlined" severity="error">
+                            {authError}</Alert>}   
                 </Grid>
                 <Grid item xs={12} md={6}>
                 <CardMedia

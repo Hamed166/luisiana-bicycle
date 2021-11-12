@@ -20,18 +20,18 @@ const Booking = ({booking}) => {
                         image={img}
                         alt="green iguana"
                     />
-                    <Box style={{backgroundColor: '#E1E6E5'}}>
-                    <CardContent>
-                    <Typography  sx={{fontWeight: 600 }}  variant="h5" gutterBottom component="div">
-                        {name}
-                    </Typography>
-                    <Typography sx={{ fontSize: 16}} variant="h5" gutterBottom component="div" color="text.secondary">
-                        {description}
-                    </Typography>
-                    </CardContent>
-                    <Link to='/placeOrder' sx={{ ml: 13, m:2, p:2}} style={{ textDecoration: 'none'}}>
-                        <Button sx={{ fontSize: 16}} style={{backgroundColor: '#2FB6FA', textDecoration: 'none'}} variant="contained" size="small">Buy The {name}</Button>
-                    </Link>
+                    <Box sx={{p:1.5}} style={{backgroundColor: '#E1E6E5'}}>
+                        <CardContent>
+                        <Typography  sx={{fontWeight: 600 }}  variant="h5" gutterBottom component="div">
+                            {name}
+                        </Typography>
+                        <Typography sx={{ fontSize: 16}} variant="h5" gutterBottom component="div" color="text.secondary">
+                            {description}
+                        </Typography>
+                        </CardContent>
+                        <Link to='/placeOrder' sx={{ ml: 13, m:2, p:2}} style={{ textDecoration: 'none'}}>
+                            <Button sx={{ fontSize: 16}} style={{backgroundColor: '#2FB6FA', textDecoration: 'none'}} variant="contained" size="small">Buy The {name}</Button>
+                        </Link>
                     </Box>
             </Card>
         </Grid>
