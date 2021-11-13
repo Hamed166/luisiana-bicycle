@@ -15,14 +15,29 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
-import Bookings from '../Bookings/Bookings';
+import {
+  Switch,
+  Route,
+  Link,
+  useRouteMatch
+} from "react-router-dom";
+import { Button } from '@mui/material';
+import DashBoardHome from './DashBoardHome/DashBoardHome';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
+import AddProduct from './AddProduct/AddProduct';
+import Review from './Review/Review';
+import useAuth from '../../Hooks/useAuth';
+import MyOrders from './MyOrders/MyOrders';
+import Pay from './Pay/Pay';
+
 
 const drawerWidth = 200;
 
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const {admin} = useAuth();
+  let { path, url } = useRouteMatch();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -56,8 +71,9 @@ function DashBoard(props) {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
+        style={{backgroundColor: '#E1E6E5'}}
       >
-        <Toolbar>
+        <Toolbar style={{color: 'red'}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -67,9 +83,30 @@ function DashBoard(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ fontWeight: 600, flexGrow: 1, letterSpacing: 3, }}>
             Dashboard
           </Typography>
+            
+            <Link to={`${url}`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">DashBoard</Button></Link>
+            
+            {admin && 
+              <Box>
+                <Link to={`${url}/makeAdmin`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Make Admin</Button></Link>
+              <Link to={`${url}/addProduct`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Add Product</Button>
+              </Link>
+              </Box>
+              }
+            { !admin && 
+              <Box>
+                <Link to={`${url}/myOrders`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">My Orders</Button></Link>
+              <Link to={`${url}/review`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Review</Button></Link>
+              <Link to={`${url}/payment`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Pay</Button></Link>
+              </Box>
+             
+            }
+            
+            {/* <Button onClick={logOut} color="inherit">Logout</Button>  */}
+          
         </Toolbar>
       </AppBar>
       <Box
@@ -108,16 +145,26 @@ function DashBoard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
-        <Typography paragraph>
-        <Grid container spacing={2}>
-            <Grid item xs={8}>
-                <Bookings></Bookings>
-            </Grid>
-            <Grid item xs={4}>
-               
-            </Grid>
-        </Grid>
-        </Typography>
+          <Switch>
+            <Route exact path={path}>
+              <DashBoardHome></DashBoardHome>
+            </Route>
+            <Route path={`${path}/makeAdmin`}>
+              <MakeAdmin></MakeAdmin>
+            </Route>
+            <Route path={`${path}/addProduct`}>
+              <AddProduct></AddProduct>
+            </Route>
+            <Route path={`${path}/myOrders`}>
+              <MyOrders></MyOrders>
+            </Route>
+            <Route path={`${path}/review`}>
+              <Review></Review>
+            </Route>
+            <Route path={`${path}/payment`}>
+              <Pay></Pay>
+            </Route>
+        </Switch>
       </Box>
     </Box>
   );

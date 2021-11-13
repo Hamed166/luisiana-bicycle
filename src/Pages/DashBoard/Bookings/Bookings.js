@@ -21,11 +21,12 @@ const Bookings = () => {
         .then(res=>res.json())
         .then(data=>setBookings(data))
     },[])
+
     return (
-        <div>
-            <h2>This is Bookings page {bookings.length}</h2>
-            <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <div >
+            <h2>Number of Orders {bookings.length}</h2>
+            <TableContainer component={Paper} >
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -45,7 +46,7 @@ const Bookings = () => {
               </TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.phone}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
+              <TableCell  style={{backgroundColor: '#E1E6E5'}} align="right">{row.date}</TableCell>
             </TableRow>
           ))}
         </TableBody>

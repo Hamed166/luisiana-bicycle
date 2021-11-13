@@ -9,15 +9,15 @@ import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
 import PlaceOrder from '../PlaceOrder/PlaceOrder';
 
-const Booking = ({booking}) => {
-    const {id, name, description, img} = booking;
+const Booking = ({product}) => {
+    const {  name, description, price, image} = product;
     return (
         
         <Grid item xs={12} sm={6} md={4}>
                 <Card sx={{ minWidth: 275 }}>
                     <CardMedia
                         component="img"
-                        image={img}
+                        image={image}
                         alt="green iguana"
                     />
                     <Box sx={{p:1.5}} style={{backgroundColor: '#E1E6E5'}}>
@@ -27,6 +27,9 @@ const Booking = ({booking}) => {
                         </Typography>
                         <Typography sx={{ fontSize: 16}} variant="h5" gutterBottom component="div" color="text.secondary">
                             {description}
+                        </Typography>
+                        <Typography sx={{ fontSize: 16}} variant="h5" gutterBottom component="div" color="text.secondary">
+                            {price}
                         </Typography>
                         </CardContent>
                         <Link to='/placeOrder' sx={{ ml: 13, m:2, p:2}} style={{ textDecoration: 'none'}}>

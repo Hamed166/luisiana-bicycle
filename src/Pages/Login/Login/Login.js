@@ -47,7 +47,7 @@ const Login = () => {
                                 name="email"
                                 type="email"
                                 onBlur= {handleOnChange}
-                                defaultValue="Your Email"
+                                label="Your Email"
                                 size="small"
                                 />
                                 <TextField
@@ -57,7 +57,7 @@ const Login = () => {
                                 name="password"
                                 onBlur= {handleOnChange}
                                 sx={{width:'90%', m:1}}
-                                defaultValue="Your Email"
+                                label="Your Password"
                                 size="small"
                                 />
                                 
