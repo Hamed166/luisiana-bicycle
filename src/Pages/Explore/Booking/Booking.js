@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import CardMedia from '@mui/material/CardMedia';
 import { Box } from '@mui/system';
 import { Link } from 'react-router-dom';
-import PlaceOrder from '../PlaceOrder/PlaceOrder';
+
 
 const Booking = ({product}) => {
     const {  name, description, price, image} = product;

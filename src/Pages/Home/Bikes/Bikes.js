@@ -1,29 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Container } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Bike from '../Bike/Bike';
 
-const bikes = [
-    {
-        name: 'Fluoride Treatement',
-        description: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-     
-    },
-    {
-        name: 'Teeth Whitening',
-        description: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-       
-    },
-    {
-        name: 'Cavity Filling',
-        description: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-        
-    }
-]
 
 const Bikes = () => {
+    const [bikes, setBikes] = useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/addProduct')
+        .then(res=> res.json())
+        .then(data => setBikes(data))
+    },[])
+    const pro =bikes.slice(0,6)
     return (
         <Box sx={{ flexGrow: 1, m:8 }}>
         <Container>
@@ -36,7 +27,7 @@ const Bikes = () => {
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {
                     bikes.map(bike =><Bike
-                    key ={bike.name}
+                    key ={bike._id}
                     bike ={bike}
                     ></Bike>)
                 }

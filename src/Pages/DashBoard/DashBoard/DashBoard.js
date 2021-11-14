@@ -29,6 +29,8 @@ import Review from './Review/Review';
 import useAuth from '../../Hooks/useAuth';
 import MyOrders from './MyOrders/MyOrders';
 import Pay from './Pay/Pay';
+import ManageAllOrders from '../ManageAllOrders/ManageAllOrders';
+import ManageProducts from './ManageProducts/ManageProducts';
 
 
 const drawerWidth = 200;
@@ -36,7 +38,7 @@ const drawerWidth = 200;
 function DashBoard(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const {admin} = useAuth();
+  const {admin, logOut} = useAuth();
   let { path, url } = useRouteMatch();
 
   const handleDrawerToggle = () => {
@@ -87,12 +89,16 @@ function DashBoard(props) {
             Dashboard
           </Typography>
             
-            <Link to={`${url}`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">DashBoard</Button></Link>
+            <Link to={`${url}/home`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Home</Button></Link>
             
             {admin && 
               <Box>
                 <Link to={`${url}/makeAdmin`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Make Admin</Button></Link>
-              <Link to={`${url}/addProduct`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Add Product</Button>
+                <Link to={`${url}/addProduct`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Add Product</Button>
+              </Link>
+              <Link to={`${url}/manageAllOrders`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Manage All Orders</Button>
+              </Link>
+              <Link to={`${url}/manageProduct`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Manage Product</Button>
               </Link>
               </Box>
               }
@@ -105,7 +111,7 @@ function DashBoard(props) {
              
             }
             
-            {/* <Button onClick={logOut} color="inherit">Logout</Button>  */}
+            <Button onClick={logOut} color="inherit">Logout</Button> 
           
         </Toolbar>
       </AppBar>
@@ -163,6 +169,12 @@ function DashBoard(props) {
             </Route>
             <Route path={`${path}/payment`}>
               <Pay></Pay>
+            </Route>
+            <Route path={`${path}/manageAllOrders`}>
+              <ManageAllOrders></ManageAllOrders>
+            </Route>
+            <Route path={`${path}/manageProduct`}>
+              <ManageProducts></ManageProducts>
             </Route>
         </Switch>
       </Box>

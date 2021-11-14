@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import image from '../../../../images/bg-2.jpg'
+
 import { Alert, Button, CardMedia, Container, Grid, TextField, Typography } from '@mui/material';
+import { Box } from '@mui/system';
 
 
 
@@ -42,8 +45,9 @@ const AddProduct = () => {
     }
 
     return (
-        <Container>
-        <Grid container spacing={2} sx={{my:10}}>
+        <Box sx={{my:8}}>
+        <Container >
+        <Grid container spacing={2} >
             <Grid item xs={12} md={6}>
                         <Typography variant="h5" component="div">
                         Add Product
@@ -88,18 +92,19 @@ const AddProduct = () => {
                                 />
                                 <Button type="submit" sx={{ fontSize: 14}} style={{backgroundColor: '#2FB6FA'}} variant="contained" size="small">Book Now</Button>
                             </form>
-                            {/* {addSuccess && <Alert severity="success">User Created successfully!</Alert>}     */}
+                            {addSuccess && <Alert severity="success">Product added successfully!</Alert>}    
             </Grid>
             <Grid item xs={12} md={6}>
             <CardMedia
                     component="img"
-                    // image={}
+                    image={image}
                     alt="green iguana"
                 />
             </Grid>
 
         </Grid>
     </Container>
+        </Box>
     );
 };
 

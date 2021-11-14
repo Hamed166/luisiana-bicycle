@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { Alert, Button, Container } from '@mui/material';
+import { Alert, Button, CardMedia, Container } from '@mui/material';
 import { Box } from '@mui/system';
 import TextField from '@mui/material/TextField';
 import useAuth from '../../Hooks/useAuth';
+import { useParams } from 'react-router';
 
 const PlaceOrder = () => {
     const [bookingSuccess, setBookingSuccess] = useState(false);
     const {user}= useAuth()
+    const time = new Date().toDateString();
+    const {productId}= useParams();
+    const [productInfo, setProductInfo]= useState([]);
 
-    const initialInfo = {name: user.displayName, email: user.email, phone: ''}
+    const initialInfo = {name: user.displayName, email: user.email, phone: '', }
     const [bookingInfo, setBookingInfo] =useState(initialInfo);
+ 
 
     const handleOnBlur = e =>{
         const field = e.target.name;
@@ -24,10 +29,21 @@ const PlaceOrder = () => {
         setBookingInfo(newInfo);
 
     }
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/addProduct/${productId}`)
+        .then(res =>res.json())
+        .then(data=> setProductInfo(data))
+
+    },[]);
+
     const handleBookingSubmit = e =>{
         const booking = {
-            ...bookingInfo
+            ...bookingInfo,
+            product: productInfo,
+            date: time
         }
+        // console.log(booking);
          // send to the server
     fetch('http://localhost:5000/placeOrders', {
         method: 'POST',
@@ -61,25 +77,24 @@ const PlaceOrder = () => {
 
             <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                 <Grid item xs={12} sm={6} md={6} sx={{ mb: 10  }}>
-                    <Card sx={{ minWidth: 275 }}>
-                        <CardContent sx={{p:2}} >
-                            <Typography sx={{ fontSize: 18, p:2  }} variant="h2"  color="text.secondary" gutterBottom>
-                            Luisiana bicyle is the best bicycle i have ever ride. Its a different experience riding luisiana mountain bicycle for women. 
+                    <Card sx={{ minWidth: 275, p:1.5 }}>
+                        <CardMedia
+                            component="img"
+                            image={productInfo?.image}
+                            alt="green iguana"
+                        />
+                        
+                        <CardContent>
+                            <Typography  sx={{fontWeight: 600 }}  variant="h5" gutterBottom component="div">
+                                {productInfo?.name}
+                            </Typography>
+                            <Typography sx={{ fontSize: 16}} variant="h5" gutterBottom component="div" color="text.secondary">
+                                {productInfo?.description}
+                            </Typography>
+                            <Typography sx={{ fontSize: 16}} variant="h5" gutterBottom component="div" color="text.secondary">
+                                {productInfo?.price}
                             </Typography>
                         </CardContent>
-                        <Box style={{backgroundColor: '#E1E6E5'}}>
-                        <CardContent sx={{ display:'flex', textAlign: 'center', alignItems:'center', justifyContent:'flex-start'}}>
-                            <img  style={{width:'80px', height:'80px', borderRadius: '50%'}} src="https://vacation-rentals.b-cdn.net/wp-content/uploads/2020/01/sophia-sebastian.jpg" alt=""/>
-                            <CardContent>
-                                <Typography sx={{ fontSize: 18  }} variant="h2"  color="text.secondary" gutterBottom>
-                                 
-                                </Typography>
-                                <Typography sx={{ fontSize: 18  }} variant="h2"  color="text.secondary" gutterBottom>
-                                Customer
-                                </Typography>
-                            </CardContent>
-                        </CardContent>
-                        </Box>
                     </Card>
                 </Grid>
                 <Grid item xs={12} sm={6} md={6}>
