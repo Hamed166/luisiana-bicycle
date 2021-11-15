@@ -15,7 +15,7 @@ import Register from './Pages/Login/Register/Register';
 import AuthProvider from './Context/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/Login/PrivateRoute/PrivateRoute';
 import DashBoard from './Pages/DashBoard/DashBoard/DashBoard';
-import Footer from './Pages/Shared/Footer/Footer';
+
 
 function App() {
   return (
@@ -53,7 +53,6 @@ function App() {
                 <DashBoard/>
               </PrivateRoute>
             </Switch>
-            <Footer></Footer>
         </Router>
       
         </AuthProvider>

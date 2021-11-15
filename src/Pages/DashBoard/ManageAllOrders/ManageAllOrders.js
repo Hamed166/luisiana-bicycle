@@ -18,10 +18,9 @@ const ManageAllOrders = () => {
         .then(data=>setAllOrders(data))
     },[load])
 
-// console.log(allOrders);
+console.log(allOrders);
 
 const handleDelete = id =>{
-    console.log(id)
      fetch(`https://salty-depths-22621.herokuapp.com/allOrders/${id}`, {
        method: 'DELETE',
      })
@@ -35,6 +34,9 @@ const handleDelete = id =>{
      })
   }
 
+  const handleup=e=>{  
+    fetch()
+  }
     return (
         <div >
             <h2>Manage All Orders {allOrders.length}</h2>
@@ -47,6 +49,8 @@ const handleDelete = id =>{
                   <TableCell align="right">Price</TableCell>
                   <TableCell align="right">Mail</TableCell>
                   <TableCell align="right">Date</TableCell>
+                  <TableCell align="right">Status</TableCell>
+                  <TableCell align="right">Approved</TableCell>
                   <TableCell align="right">Delete</TableCell>
                 </TableRow>
               </TableHead>
@@ -69,6 +73,16 @@ const handleDelete = id =>{
                     <TableCell align="right">{row?.product?.price}</TableCell>
                     <TableCell align="right">{row.email}</TableCell>
                     <TableCell align="right">{row.date}</TableCell>
+                    <TableCell align="right">
+                      <button  style={{backgroundColor:"#777",padding:'8px 15px',borderRadius:'50px',border:"none",color:"#fff"}}>
+                      {row.status}
+                      </button>
+                    </TableCell>
+                    <TableCell align="right">
+                      <button onClick={()=>handleup(row._id)} style={{backgroundColor:"green",padding:'8px 15px',borderRadius:'50px',border:"none",color:"#fff",cursor:"pointer"}}>
+                      Approved
+                      </button>
+                    </TableCell>
                     <TableCell style={{cursor:'pointer'}} onClick={()=> handleDelete(row._id)} align="right">Delete</TableCell>
                   </TableRow>
                 ))}

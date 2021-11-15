@@ -40,6 +40,7 @@ const PlaceOrder = () => {
     const handleBookingSubmit = e =>{
         const booking = {
             ...bookingInfo,
+            status:"pending",
             product: productInfo,
             date: time
         }

@@ -25,7 +25,7 @@ import { Button } from '@mui/material';
 import DashBoardHome from './DashBoardHome/DashBoardHome';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import AddProduct from './AddProduct/AddProduct';
-import Review from './Review/Review';
+import Review from './ReviewInput/ReviewInput';
 import useAuth from '../../Hooks/useAuth';
 import MyOrders from './MyOrders/MyOrders';
 import Pay from './Pay/Pay';
