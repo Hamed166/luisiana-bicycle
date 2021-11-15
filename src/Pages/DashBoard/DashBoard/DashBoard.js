@@ -89,7 +89,7 @@ function DashBoard(props) {
             Dashboard
           </Typography>
             
-            <Link to={`${url}/home`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Home</Button></Link>
+            <Link to={`/home`} sx={{mr:2}} style={{textDecoration:'none'}}><Button color="inherit">Home</Button></Link>
             
             {admin && 
               <Box>
