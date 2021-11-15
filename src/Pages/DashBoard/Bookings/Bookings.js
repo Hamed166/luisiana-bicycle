@@ -20,7 +20,7 @@ const Bookings = () => {
 
    
     useEffect(()=>{
-        const url =`http://localhost:5000/placeOrders?email=${user.email}`
+        const url =`https://salty-depths-22621.herokuapp.com/placeOrders?email=${user.email}`
         fetch(url)
         .then(res=>res.json())
         .then(data=>setBookings(data))
@@ -29,7 +29,7 @@ const Bookings = () => {
 
     const handleDelete = id =>{
       console.log(id)
-       fetch(`http://localhost:5000/placeOrders/${id}`, {
+       fetch(`https://salty-depths-22621.herokuapp.com/placeOrders/${id}`, {
          method: 'DELETE',
        })
        .then(res=> res.json())

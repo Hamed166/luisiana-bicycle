@@ -31,7 +31,7 @@ const PlaceOrder = () => {
     }
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/addProduct/${productId}`)
+        fetch(`https://salty-depths-22621.herokuapp.com/addProduct/${productId}`)
         .then(res =>res.json())
         .then(data=> setProductInfo(data))
 
@@ -45,7 +45,7 @@ const PlaceOrder = () => {
         }
         // console.log(booking);
          // send to the server
-    fetch('http://localhost:5000/placeOrders', {
+    fetch('https://salty-depths-22621.herokuapp.com/placeOrders', {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

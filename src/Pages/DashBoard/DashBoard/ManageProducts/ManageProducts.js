@@ -13,7 +13,7 @@ const ManageProducts = () => {
     const [load, setLoad] = useState(false);
 
     useEffect(()=>{
-        fetch('http://localhost:5000/addProduct')
+        fetch('https://salty-depths-22621.herokuapp.com/addProduct')
         .then(res=>res.json())
         .then(data=>setManageProducts(data))
     },[load])
@@ -22,7 +22,7 @@ const ManageProducts = () => {
 
 const handleDelete = id =>{
     console.log(id)
-     fetch(`http://localhost:5000/addProduct/${id}`, {
+     fetch(`https://salty-depths-22621.herokuapp.com/addProduct/${id}`, {
        method: 'DELETE',
      })
      .then(res=> res.json())

@@ -16,7 +16,7 @@ const Navigation = () => {
         <Box sx={{ flexGrow: 1 }} >
             <AppBar position="fixed" style={{backgroundColor: '#ffffff'}}>
                 <Toolbar style={{color: 'red'}}>
-                    <Typography variant="h5" component="div" sx={{ fontWeight: 600, flexGrow: 1, letterSpacing: 6, }}>
+                    <Typography variant="h5" component="div" sx={{ fontWeight: 600, mr:70, flexGrow: 1, letterSpacing: 6, }}>
                         LUISIANA 
                     </Typography>
                     

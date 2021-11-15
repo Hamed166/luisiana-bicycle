@@ -14,7 +14,7 @@ const bannerImage = {
 const Banner = () => {
     return (
         <Box style={bannerImage} >
-           <Container sx={{height:'600px',display:'flex', textAlign: 'left', alignItems:'center', justifyContent:'flex-start'}}>
+           <Container sx={{height:'600px', display:'flex', textAlign: 'left', alignItems:'center', justifyContent:'flex-start'}}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     
                     <Grid  item xs={12} md={6} sx={{}}>
