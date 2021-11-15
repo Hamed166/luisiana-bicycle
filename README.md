@@ -1,18 +1,16 @@
-# Getting Started with Create React App
+# Luisiana Bicycle is react app theme with Material UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Luisiana is React  Online bicycle buying theme based on WooCommerce plugin. It is suitable for  bicycle, bike. It is also multipurpose theme which can be used for any kind of online store. Luisiana WooCommerce theme is looking good with it’s clean and fresh design. All sub pages are customized.
 
-## Available Scripts
+This project was made with material UI with [Create React App](https://luisiana-bicycle.web.app/).
 
-In the project directory, you can run:
+## The reason to use this  Luisiana theme
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [ Luisiana is a react built theme for buying mountain bicycle. It is a theme that’s designed specifically for the use by bike websites.]
+ - [You’ll find that luisiana gives you ample freedom to talk about your tour organization in a way that leaves no questions in customer's minds.]
+ - [***Creating a medical website should always be about giving patients what they need. One of the ways that MediCare achieves this is through a design that focuses on health-related needs.*** ]
+  - [Two primary features of luisiana are the Doctors Time Table & Schedule Page. And also, a Quick Doctor Appointment Page.]
+   - [The booing form lets clientss select a bike names. This ensures that they’ll always make the right booking with the right bike.]
 
 ### `npm test`
 

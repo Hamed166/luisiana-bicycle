@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import { Container } from '@mui/material';
+import { CardMedia, Container } from '@mui/material';
 import { Box, typography } from '@mui/system';
 import Rating from 'react-rating';
 
@@ -28,15 +28,22 @@ const Review = () => {
                     <Typography sx={{ fontWeight: 600, m:2 }} variant="h3"  color="text.secondary" gutterBottom>
                             Customer
                     </Typography>
-                    <Typography sx={{ fontSize: 16,m:2 }} variant="h5"  color="text.secondary" gutterBottom>
+                    <Typography sx={{ fontSize: 16, my:2 }} variant="h5"  color="text.secondary" gutterBottom>
                             saying about their luisiana bike experiences
                     </Typography>
-                <Grid  container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid  container rowSpacing={1} spacing={2} sx={{my:2}}>
                 
                     {
-                        updatedReview.map(review=><Grid item xs={12} sm={6} md={4} 
+                        updatedReview.map(review=><Grid sx={{my:1}} item xs={12} sm={6} md={4} 
                             key={review._id}>
                          <Box sx={{backgroundColor:'#fff'}}>
+                             <Box >
+                                 {review.image  && <img style={{width:"50px", height:'50px', borderRadius:'50px',marginTop: '-50px'}} src={review.image} alt=''/>}
+                                 {!review.image && <img style={{width:"50px", height:'50px', borderRadius:'50px', marginTop: '-50px'}} src='https://cdn-icons.flaticon.com/png/512/805/premium/805404.png?token=exp=1636997188~hmac=3cc7fa6e271cee3323d123a2f4655571' alt=''/>}
+                             </Box>
+                             <Typography>
+                                 {review.name}
+                             </Typography>
                          <Typography>
                            {review.text} 
                            </Typography>

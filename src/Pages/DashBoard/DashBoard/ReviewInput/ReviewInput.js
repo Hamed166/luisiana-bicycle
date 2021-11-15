@@ -4,21 +4,27 @@ import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import useAuth from "../../../Hooks/useAuth"
 
 
 const Review = () => {
     const [value, setValue] = useState(2);
     const [textarea, setTextarea]= useState('');
+    const {user} = useAuth()
 
     const handleOnBlur = e =>{
         setTextarea(e.target.value);
     }
 
 
+    console.log(user)
+
     const handleReview = e =>{
         const review = {
             text: textarea,
-            reviews: value
+            reviews: value,
+            name:user.displayName,
+            image: user.photoURL
         }
         e.preventDefault()
         console.log(review);
@@ -60,7 +66,7 @@ const Review = () => {
                     }}
                 />
             </Box>
-      <Button type="submit">Submit</Button>
+      <Button variant='contained' type="submit">Submit</Button>
             </form>
         </div>
     );

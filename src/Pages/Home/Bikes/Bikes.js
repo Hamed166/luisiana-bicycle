@@ -24,9 +24,10 @@ const Bikes = () => {
             <Typography sx={{ fontWeight: 600, m:4 }} variant="h4" component="div">
                 Explore Our Lineup
             </Typography>
+
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 {
-                    bikes.map(bike =><Bike
+                    pro.map(bike =><Bike
                     key ={bike._id}
                     bike ={bike}
                     ></Bike>)
